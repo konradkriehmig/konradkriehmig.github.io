@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Konrad</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000 100%);
+      overflow: hidden;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+
+    nav {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav a {
+      color: #aaa;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: white;
+    }
+
+    h1 {
+      margin-top: 120px;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    p {
+      color: #ccc;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    /* 🌟 Stars */
+    .stars {
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow:
+        100px 200px white,
+        400px 80px #aab,
+        250px 300px #eef,
+        600px 500px #ccd,
+        900px 120px #dde,
+        750px 250px #eef,
+        200px 600px #ccd,
+        50px 400px #eef,
+        1100px 300px #aaf,
+        1300px 200px #bbc;
+      animation: animStar 100s linear infinite;
+    }
+
+    @keyframes animStar {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-2000px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="blog.html" class="active">Blog</a>
+  </nav>
+
+  <main>
+    <h1>Konrad’s Blog</h1>
+    <p>Quiet thoughts from the edge of the universe.<br>
+    Posts coming soon — each commit adds a new story.</p>
+  </main>
+</body>
+</html>
