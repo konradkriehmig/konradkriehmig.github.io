@@ -1,11 +1,295 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome to My Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konrad – Cloud & AI Portfolio</title>
+  <meta name="description" content="Konrad – Cloud & AI Solutions, Product, and Strategy portfolio. Projects, experience, and ways to reach me." />
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root{
+      --bg: #0b0d10;
+      --bg-soft:#11151b;
+      --text:#e8edf2;
+      --muted:#9aa8b2;
+      --brand:#6ee7ff; /* cyan */
+      --brand-2:#9b8cff; /* violet */
+      --card:#0f141aee;
+      --stroke:#1f2937;
+      --ring: 0 0 0 3px rgba(110,231,255,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --bg-soft:#fff;
+        --text:#0f141a;
+        --muted:#475569;
+        --card:#ffffffea;
+        --stroke:#e5e7eb;
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background:radial-gradient(80rem 80rem at 120% -10%, rgba(155,140,255,.15), transparent 60%), radial-gradient(60rem 60rem at -10% 120%, rgba(110,231,255,.12), transparent 60%), var(--bg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
+    .nav{position:sticky; top:0; backdrop-filter:saturate(1.2) blur(10px); background:linear-gradient(to bottom, rgba(15,20,26,.75), rgba(15,20,26,.35)); border-bottom:1px solid var(--stroke); z-index:20}
+    @media (prefers-color-scheme: light){.nav{background:linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,.6));}}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 24px}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .badge{padding:4px 10px; border:1px solid var(--stroke); border-radius:999px; font-size:12px; color:var(--muted)}
+    .nav a{opacity:.85}
+    .nav a:hover{opacity:1}
+    .nav-links{display:flex; gap:18px; font-weight:600}
+
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:32px; align-items:center; padding:64px 24px 24px}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}}
+    .title{font-size:clamp(34px, 4vw, 54px); line-height:1.1; margin:0}
+    .subtitle{font-size:clamp(16px, 2.2vw, 20px); color:var(--muted); margin:12px 0 24px}
+    .cta-row{display:flex; flex-wrap:wrap; gap:12px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid var(--stroke); background:linear-gradient(180deg, var(--card), transparent); box-shadow: 0 10px 30px rgba(0,0,0,.12)}
+    .btn.primary{border:0; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0d10}
+    .btn:focus{outline:none; box-shadow:var(--ring)}
+
+    .card{background:var(--card); border:1px solid var(--stroke); border-radius:16px; padding:20px}
+    .grid{display:grid; gap:16px}
+
+    .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:20px}
+    @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+    .kpi{padding:18px; border-radius:14px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
+    .kpi .n{font-size:28px; font-weight:800}
+    .kpi .l{color:var(--muted); font-weight:600}
+
+    .section{padding:36px 24px}
+    .section h2{margin:0 0 10px; font-size:clamp(22px, 3vw, 28px)}
+    .lead{color:var(--muted); margin:0 0 18px}
+
+    .projects{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:1000px){.projects{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.projects{grid-template-columns:1fr}}
+    .project-card{display:flex; flex-direction:column; gap:12px; padding:16px; border:1px solid var(--stroke); border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.03), transparent)}
+    .project-card h3{margin:0; font-size:18px}
+    .chip{display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; border:1px solid var(--stroke); color:var(--muted); font-size:12px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .project-card a:hover{opacity:.9}
+
+    .exp{grid-template-columns:repeat(2,1fr)}
+    @media(max-width:900px){.exp{grid-template-columns:1fr}}
+    .exp-item{display:grid; grid-template-columns:auto 1fr; gap:12px; padding:16px; border:1px solid var(--stroke); border-radius:14px}
+    .exp-logo{width:44px; height:44px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0d10; font-weight:900}
+    .exp-item h3{margin:0}
+    .exp-item .meta{color:var(--muted); font-weight:600; font-size:14px}
+
+    .footer{padding:40px 24px 80px; color:var(--muted); border-top:1px solid var(--stroke); text-align:center}
+
+    .dot{width:10px; height:10px; border-radius:50%; background:conic-gradient(var(--brand), var(--brand-2)); display:inline-block; vertical-align:middle; box-shadow:0 0 24px rgba(110,231,255,.6)}
+    .gradient-text{background:linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+
+    .divider{height:1px; background:linear-gradient(90deg, transparent, var(--stroke), transparent); margin:28px 0}
+
+    /* Smooth scroll & subtle reveal */
+    html{scroll-behavior:smooth}
+    [data-reveal]{opacity:0; transform:translateY(12px); transition:all .6s ease}
+    [data-reveal].in{opacity:1; transform:none}
+
+    /* Back to top */
+    .to-top{position:fixed; right:18px; bottom:18px; padding:10px 12px; border-radius:12px; border:1px solid var(--stroke); background:var(--card); display:none}
+    .to-top.show{display:inline-flex}
+
+    /* Accessible focus */
+    :focus-visible{outline:3px solid rgba(110,231,255,.6); outline-offset:2px}
+  </style>
 </head>
 <body>
-    <h1>Hello! I’m Konrad 👋</h1>
-    <p>This is my first GitHub Page.</p>
+  <header class="nav">
+    <div class="nav-inner container">
+      <a class="logo" href="#top" aria-label="Home">
+        <span class="dot"></span>
+        <span>Konrad</span>
+        <span class="badge">Cloud & AI</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a class="badge" href="#resume">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="title" data-reveal>
+          Building <span class="gradient-text">Cloud & AI</span> products that ship — not just slide.
+        </h1>
+        <p class="subtitle" data-reveal>
+          I combine strategy, engineering, and data to deliver business outcomes. Former McKinsey Digital (intern), now Microsoft Digital Solution Engineer for Cloud & AI. Fluent in <strong>DE/EN/ZH</strong>.
+        </p>
+        <div class="cta-row" data-reveal>
+          <a class="btn primary" href="#projects" aria-label="View Projects">View Projects →</a>
+          <a class="btn" href="#contact" aria-label="Contact Konrad">Contact</a>
+          <a class="btn" href="#resume" aria-label="Resume">Résumé</a>
+        </div>
+        <div class="kpis" data-reveal>
+          <div class="kpi"><div class="n">7+</div><div class="l">Markets analyzed (APAC/EU)</div></div>
+          <div class="kpi"><div class="n">10x</div><div class="l">Dashboard adoption uplift</div></div>
+          <div class="kpi"><div class="n">€3–5M</div><div class="l">Account sizes supported</div></div>
+          <div class="kpi"><div class="n">3</div><div class="l">Languages (DE/EN/ZH)</div></div>
+        </div>
+      </div>
+      <div class="card" aria-label="Profile highlight" data-reveal>
+        <h2 style="margin-top:0">What I do</h2>
+        <p class="lead">Cloud architectures • AI integrations • GTM for B2B • Pricing/monetization • Data products</p>
+        <div class="divider"></div>
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+          <div class="chip">☁️ Azure | GCP</div>
+          <div class="chip">🤖 Python | SQL</div>
+          <div class="chip">📈 Pricing & Growth</div>
+          <div class="chip">📊 Dashboards</div>
+          <div class="chip">🧩 Systems Design</div>
+          <div class="chip">🧠 LLM Apps</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2>Selected Projects</h2>
+      <p class="lead">A few things I shipped and analyzed. More on GitHub.</p>
+      <div class="grid projects">
+        <article class="project-card" data-reveal>
+          <h3>Momentum Portfolios – Backtesting Suite</h3>
+          <p>Comparative backtesting of momentum-based portfolio construction using Python (QuantConnect). Includes MPT, Risk Parity, Min-Var, Max-Div; report + code.</p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">QuantConnect</span>
+            <span class="chip">Finance</span>
+          </div>
+          <a class="btn" href="#" aria-label="View repository">View repo →</a>
+        </article>
+        <article class="project-card" data-reveal>
+          <h3>Cloud Cost Optimizer for Data Pipelines</h3>
+          <p>Designed a cost-aware pipeline architecture across Snowflake + Azure; estimated 30–40% cost reduction with usage-tiering and task scheduling.</p>
+          <div class="chips">
+            <span class="chip">Azure</span>
+            <span class="chip">Snowflake</span>
+            <span class="chip">SQL</span>
+          </div>
+          <a class="btn" href="#" aria-label="View case study">Case study →</a>
+        </article>
+        <article class="project-card" data-reveal>
+          <h3>Pricing Playbook – B2B SaaS</h3>
+          <p>Built a pricing & packaging playbook with value metrics and discount guardrails; improved deal velocity and average contract value in pilot.</p>
+          <div class="chips">
+            <span class="chip">Pricing</span>
+            <span class="chip">Monetization</span>
+            <span class="chip">GTM</span>
+          </div>
+          <a class="btn" href="#" aria-label="View slides">Read slides →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <div class="grid exp">
+        <div class="exp-item" data-reveal>
+          <div class="exp-logo" aria-hidden="true">MS</div>
+          <div>
+            <h3>Digital Solution Engineer – Cloud & AI</h3>
+            <div class="meta">Microsoft · Dublin · 2025—Present</div>
+            <p>Pre‑sales architecture and solutioning for mid‑market DACH. Focus on Azure AI/ML, data platforms, and automation to drive revenue and retention.</p>
+          </div>
+        </div>
+        <div class="exp-item" data-reveal>
+          <div class="exp-logo" aria-hidden="true">McK</div>
+          <div>
+            <h3>Intern – McKinsey Digital</h3>
+            <div class="meta">Munich · 2025</div>
+            <p>Built dashboards, quantified value, and supported procurement/value‑prop workstreams for an automotive supplier. Standardized GTM collateral.</p>
+          </div>
+        </div>
+        <div class="exp-item" data-reveal>
+          <div class="exp-logo" aria-hidden="true">SG</div>
+          <div>
+            <h3>Strategy & Market Intelligence</h3>
+            <div class="meta">Siemens · APAC · 2023–2024</div>
+            <p>Analyzed >10 verticals across 7 APAC countries; created KPI dashboards for forecasting and budgeting. Presented to regional leadership.</p>
+          </div>
+        </div>
+        <div class="exp-item" data-reveal>
+          <div class="exp-logo" aria-hidden="true">DE</div>
+          <div>
+            <h3>Data Engineer</h3>
+            <div class="meta">Siemens · Germany · 2023</div>
+            <p>Migrated analytics from SAP HANA to Snowflake; enabled self‑serve analytics and multi‑user access; improved performance and UX.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="section">
+      <h2>Résumé</h2>
+      <p class="lead">Download a one‑page PDF or view my detailed CV.</p>
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:16px">
+        <a class="btn" href="#" download>Download 1‑page PDF</a>
+        <a class="btn" href="#">Open detailed CV</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p class="lead">Open to Cloud/AI engineering and PM roles in London, Zürich, Singapore.</p>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:12px">
+        <a class="project-card" href="mailto:you@example.com" aria-label="Email">
+          <strong>✉️ Email</strong>
+          <span class="muted">you@example.com</span>
+        </a>
+        <a class="project-card" href="#" aria-label="GitHub">
+          <strong>🐙 GitHub</strong>
+          <span class="muted">github.com/yourusername</span>
+        </a>
+        <a class="project-card" href="#" aria-label="LinkedIn">
+          <strong>🔗 LinkedIn</strong>
+          <span class="muted">linkedin.com/in/yourhandle</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Konrad — Built with GitHub Pages. Designed by Aneeka.
+    </div>
+  </footer>
+
+  <a class="to-top" id="toTop" href="#top" aria-label="Back to top">↑</a>
+
+  <script>
+    // Reveal on scroll
+    const items = document.querySelectorAll('[data-reveal]');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in') })
+    }, {threshold:.12});
+    items.forEach(i=>io.observe(i));
+
+    // Back to top
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 400) toTop.classList.add('show'); else toTop.classList.remove('show');
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
