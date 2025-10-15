@@ -44,9 +44,22 @@
     }
     a{color:inherit; text-decoration:none}
     .container{max-width:1100px; margin:0 auto; padding:24px}
-    .nav{position:sticky; top:0; backdrop-filter:saturate(1.2) blur(10px); background:linear-gradient(to bottom, rgba(15,20,26,.75), rgba(15,20,26,.35)); border-bottom:1px solid var(--stroke); z-index:20}
-    @media (prefers-color-scheme: light){.nav{background:linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,.6));}}
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 24px}
+    .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  backdrop-filter: saturate(1.2) blur(10px);
+  background: linear-gradient(to bottom, rgba(15,20,26,.75), rgba(15,20,26,.35));
+  border-bottom: 1px solid var(--stroke);
+}
+@media (prefers-color-scheme: light){
+  .nav{
+    background:linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,.6));
+  }
+}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px}
     .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
     .badge{padding:4px 10px; border:1px solid var(--stroke); border-radius:999px; font-size:12px; color:var(--muted)}
     .nav a{opacity:.85}
@@ -72,6 +85,9 @@
     .kpi .l{color:var(--muted); font-weight:600}
 
     .section{padding:36px 24px}
+    .section {
+  scroll-margin-top: 60px; /* slightly more than header height for spacing */
+}
     .section h2{margin:0 0 10px; font-size:clamp(22px, 3vw, 28px)}
     .lead{color:var(--muted); margin:0 0 18px}
 
@@ -133,21 +149,21 @@
 </head>
 <body>
   <header class="nav">
-    <div class="nav-inner container">
-      <a class="logo" href="#top" aria-label="Home">
-        <span class="dot"></span>
-        <span>Konrad</span>
-      </a>
-      <nav class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <a class="badge" href="blog.html">Blog</a>
-      </nav>
-    </div>
-  </header>
+  <div class="container nav-inner">
+    <a class="logo" href="#top" aria-label="Home">
+      <span class="dot"></span>
+      <span>Konrad</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a class="badge" href="blog.html">Blog</a>
+    </nav>
+  </div>
+</header>
 
-  <main id="top" class="container">
+  <main id="top" class="container" style="padding-top: 72px;">
     <!-- HERO -->
     <section class="hero">
       <div>
@@ -258,8 +274,8 @@
             <img src="assets/mck_icon.png" alt="McK_icon" style="width:36px; height:36px; border-radius:8px;">
           </div>
           <div>
-            <h3>Intern – McKinsey</h3>
-            <div class="meta">Munich · 2025</div>
+            <h3>Consulting Intern</h3>
+            <div class="meta">McKinsey & Company · Munich · 2025</div>
             <p>Built dashboards, quantified value, and supported procurement/value‑prop workstreams for an automotive supplier. Standardized GTM collateral.</p>
           </div>
         </div>
@@ -268,8 +284,10 @@
             <img src="assets/siemens_icon.jpeg" alt="siemens_icon" style="width:36px; height:36px; border-radius:8px;">
           </div>
           <div>
-            <h3>Strategy & Market Intelligence</h3>
-            <div class="meta">Siemens · APAC · 2023–2024</div>
+            <h3>APAC Strategy Intern</h3>
+            <div class="meta">Siemens · Singapore            <!-- ...existing code... -->
+
+            <!-- ...existing code... --> · 2023–2024</div>
             <p>Analyzed >10 verticals across 7 APAC countries; created KPI dashboards for forecasting and budgeting. Presented to regional leadership.</p>
           </div>
         </div>
@@ -279,7 +297,7 @@
           </div>
           <div>
             <h3>Data Engineer</h3>
-            <div class="meta">Siemens · Germany · 2023</div>
+            <div class="meta">Siemens · Leipzig (Germany) · 2023</div>
             <p>Migrated analytics from SAP HANA to Snowflake; enabled self‑serve analytics and multi‑user access; improved performance and UX.</p>
           </div>
         </div>
@@ -300,7 +318,7 @@
           <strong>🐙 GitHub</strong>
           <span class="muted">github.com/konradkriehmig</span>
         </a>
-        <a class="project-card" href="#" aria-label="LinkedIn">
+        <a class="project-card" href="linkedin.com/in/konradkriehmig" aria-label="LinkedIn">
           <strong>🔗 LinkedIn</strong>
           <span class="muted">linkedin.com/in/konradkriehmig</span>
         </a>
@@ -308,9 +326,12 @@
   </div>
 </section>
     <section id="values" class="section">
+    <div class="container">
       <h2>Values</h2>
       <p class="lead">Integrity - Health - Dedication - Diligence - Composure</p>
-    </section>
+    </div>
+  </section>
+
   </main>
 
   <footer class="footer">
